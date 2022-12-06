@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
                 pline = pline[2].strip()  # pline is now str
                 if pline:
                     # check for *args or **kwargs
-                    if pline[0] is '{' and pline[-1] is'}'\
+                    if pline[0] is '{' and pline[-1] is '}'\
                             and type(eval(pline)) is dict:
                         _args = pline
                     else:
@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
                 k, v = param.split('=')
                 try:
                     attribute = HBNBCommand.verify_attribute(v)
-                except:
+                except exception as e:
                     continue
                 if not attribute:
                     continue
@@ -345,6 +345,7 @@ class HBNBCommand(cmd.Cmd):
                     return float(attribute)
             except ValueError:
                 return None
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
